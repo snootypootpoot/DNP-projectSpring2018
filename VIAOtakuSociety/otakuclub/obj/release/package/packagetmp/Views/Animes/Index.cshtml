@@ -1,0 +1,50 @@
+﻿@model IEnumerable<OtakuClub.Models.Anime>
+
+@{
+    ViewBag.Title = "Schedule";
+}
+
+<h2>Schedule of Animes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+        </th>
+        <th>
+            <p>Title</p>
+        </th>
+        <th>
+            <p>Screening start</p>
+        </th>
+        <th>
+            <p>Screening end</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="vertical-align:middle">
+            <img src="@Html.DisplayFor(modelItem => item.imageLink)" alt="Thumbnail" width="112" height="159" />
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.start)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.end)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.ActionLink("Edit", "Edit", new { id=item.animeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.animeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.animeID })
+        </td>
+    </tr>
+}
+
+</table>
